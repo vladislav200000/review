@@ -1,5 +1,10 @@
+<script setup>
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiChevronDown } from '@mdi/js'
+</script>
+
 <template>
-  <body class="bg-gray-100">
+  <body class="bg-white-100">
     <div class="flex items-center justify-center">
       <form
         class="bg-image w- max-w-lgs rounded px-8 pt-5 pb-10 mb-4 flex flex-col items-center justify-evenly"
@@ -12,18 +17,30 @@
           </h2>
           <h2 class="text-center text-white text-5xl font-bold h-50 w-50">Юрист для людей</h2>
           <div
-            class="button mt-10 py-4 px-5 rounded-full bg-emerald-400 hover:bg-orange-500 text-white"
+            class="button mt-10 py-4 px-5 rounded-full bg-teal-400 hover:bg-orange-500 text-white"
           >
             Добавить отзыв
           </div>
         </div>
         <body class="bg-gray-800 flex flex-col items-center justify-center h-screen"></body>
-        <button id="scrollButton justify-center items-center flex-col" class="focus:outline-none">
-          <div class="arrow"></div>
+        <button
+          id="@click:scrollButton  justify-center items-center flex-col"
+          class="focus:outline-none"
+        >
+          <a href="#text"
+            ><div class="arrow">
+              <svg-icon
+                type="mdi"
+                :path="mdiChevronDown"
+                class="text-white w-10 h-10"
+              ></svg-icon></div
+          ></a>
         </button>
       </form>
     </div>
   </body>
+
+  <!-- mdiChevronDown  -->
 </template>
 <style>
 .bg-image {
@@ -41,9 +58,21 @@
 .arrow {
   width: 30px;
   height: 30px;
-  border-right: 3px solid white;
-  border-bottom: 3px solid white;
-  transform: rotate(45deg);
   animation: bounce 1.5s infinite;
+
+  scroll-behavior: smooth;
+}
+.scrollButton {
+  scroll-behavior: smooth;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 </style>
