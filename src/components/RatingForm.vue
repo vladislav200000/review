@@ -53,19 +53,19 @@
   </section>
   <div class="bg-teal-400 h-20 text-white py-2 overflow-hidden">
     <div class="marquee-content px-10 pt-5 text-base w-screen max-w-screen">
-      <span class="mx-4 text-3xl text-bold marquee">
+      <span class="mx-4 text-2xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
         людей
       </span>
-      <span class="mx-4 text-3xl text-bold marquee">
+      <span class="mx-4 text-2xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
         людей
       </span>
-      <span class="mx-4 text-3xl text-bold marquee">
+      <span class="mx-4 text-2xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
         людей
       </span>
-      <span class="mx-4 text-3xl text-bold marquee">
+      <span class="mx-4 text-2xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
         людей
       </span>

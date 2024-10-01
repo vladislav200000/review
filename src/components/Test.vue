@@ -15,7 +15,7 @@ const todos = reactive({})
 
 async function getTodoData() {
   const data = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
-  // @ts-ignore
+
   todos.title = data.data.title
 }
 

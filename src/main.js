@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
-import App from './AppForm.vue'
-// eslint-disable-next-line no-unused-vars
+import App from './views/AppForm.vue'
 import './index.css'
 import { router } from './router'
 import { createStore } from 'vuex'

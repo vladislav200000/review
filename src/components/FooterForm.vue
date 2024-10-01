@@ -5,7 +5,7 @@
     <div class="flex flex-col md:flex-row px-4 justify-between mx-32">
       <div class="mb-4 md:mb-0 flex flex-col">
         <img src="../assets/images/souz.jpg" width="220px" height="130px" />
-        <p class="text-sm text-xs pt-3 text-wrap hover:text-balance">
+        <p class="text-sm pt-3 text-wrap hover:text-balance">
           Правда сотрудников о работодателе на Российском сайте " СОЮЗ "
         </p>
       </div>
