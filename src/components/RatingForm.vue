@@ -55,23 +55,19 @@
     <div class="marquee-content px-10 pt-5 text-base w-screen max-w-screen">
       <span class="mx-4 text-3xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
-        людей •
+        людей
       </span>
       <span class="mx-4 text-3xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
-        людей •
+        людей
       </span>
       <span class="mx-4 text-3xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
-        людей •
+        людей
       </span>
       <span class="mx-4 text-3xl text-bold marquee">
         • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
-        людей •
-      </span>
-      <span class="mx-4 text-3xl text-bold marquee">
-        • Юрист для людей • Отзывы о компании • Юрист для людей • Отзывы о компании • Юрист для
-        людей •
+        людей
       </span>
     </div>
   </div>
@@ -99,6 +95,6 @@
 .marquee-content {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee 10s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 </style>
