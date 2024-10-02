@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import App from './views/AppForm.vue'
+import App from './components/AppForm.vue'
+// import LogRegForm from './components/LogRegForm.vue'
 import './index.css'
 import { router } from './router'
 import { createStore } from 'vuex'

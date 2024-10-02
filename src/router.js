@@ -1,6 +1,7 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
-import App from './views/AppForm.vue'
+import App from './components/AppForm.vue'
+import LogRegForm from './components/LogRegForm.vue'
 const routes = [
   {
     path: '/',
@@ -10,7 +11,7 @@ const routes = [
   {
     path: '/reg',
     name: 'reg',
-    component: () => import('./views/AuthenticateForm.vue')
+    component: LogRegForm
   }
 ]
 

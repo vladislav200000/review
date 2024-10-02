@@ -8,9 +8,9 @@
   <StatisticForm />
   <ReviewForm />
   <Test />
-
   <!-- <ReviewCard v-for="(review, index) in reviews" :key="index" :review="review" /> -->
   <FooterForm />
+  <AxiForm />
 </template>
 
 <script setup>
@@ -23,4 +23,5 @@ import ReviewForm from '../components/ReviewForm.vue'
 // import ReviewCard from '../components/ReviewCard.vue'
 import FooterForm from '../components/FooterForm.vue'
 import Test from '../components/Test.vue'
+import AxiForm from './AxiForm.vue'
 </script>
