@@ -98,3 +98,5 @@
   animation: marquee 25s linear infinite;
 }
 </style>
+
+<script setup></script>

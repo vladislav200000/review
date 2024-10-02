@@ -11,6 +11,7 @@
   <!-- <ReviewCard v-for="(review, index) in reviews" :key="index" :review="review" /> -->
   <FooterForm />
   <AxiForm />
+  <RouterView />
 </template>
 
 <script setup>

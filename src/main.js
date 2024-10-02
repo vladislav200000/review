@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
-import App from './components/AppForm.vue'
+
 // import LogRegForm from './components/LogRegForm.vue'
 import './index.css'
-import { router } from './router'
+import router from './router'
 import { createStore } from 'vuex'
+import App from './App.vue'
+import axios from 'axios'
 
 export const store = createStore({
   state() {
@@ -18,4 +20,6 @@ export const store = createStore({
   }
 })
 
-createApp(App).use(router).use(store).mount('#app')
+axios.defaults.baseURL = 'http://127.0.0.1:8000'
+
+createApp(App).use(store).use(router).mount('#app')
