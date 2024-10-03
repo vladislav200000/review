@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center pt-20 pb-20">
+  <div>
+    {{ data ? data : 'Данных нету' }}
+  </div>
+  <div class="flex flex-col items-center justify-center pt-20 pb-20" @submit.prevent="review">
     <div class="bg-white rounded-lg shadow-md p-6 w-5/6">
       <div class="flex items-center mb-4">
         <h2 class="text-lg font-semibold">
@@ -346,9 +349,12 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
+      data: null,
       currentQuestionIndex: 0,
       questions: [
         { text: 'Оцените условия труда по 5-бальной шкале' },
@@ -368,11 +374,25 @@ export default {
         this.currentQuestionIndex++
       } else {
         alert('Спасибо за прохождение опроса!')
+        this.review()
       }
     },
     prevQuestion() {
       if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--
+      }
+    },
+    async review() {
+      try {
+        const response = await axios.post('/api/review', {
+          answers: this.answers
+        })
+        console.log(response)
+        this.data = response.data
+        alert('Спасибо за прохождение опроса!')
+      } catch (error) {
+        console.error('Ошибка при отправке данных:', error)
+        alert('Ошибка при отправке данных. Пожалуйста, попробуйте позже.')
       }
     }
   }

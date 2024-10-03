@@ -3,14 +3,15 @@
 <template>
   <HeadForm />
   <ImageForm />
+  <ListOrganizations />
   <OverviewForm />
   <RatingForm />
   <StatisticForm />
   <ReviewForm />
-  <Test />
+  <!-- <Test /> -->
   <!-- <ReviewCard v-for="(review, index) in reviews" :key="index" :review="review" /> -->
   <FooterForm />
-  <AxiForm />
+  <!-- <AxiForm /> -->
   <RouterView />
 </template>
 
@@ -23,6 +24,7 @@ import StatisticForm from '../components/StatisticForm.vue'
 import ReviewForm from '../components/ReviewForm.vue'
 // import ReviewCard from '../components/ReviewCard.vue'
 import FooterForm from '../components/FooterForm.vue'
-import Test from '../components/Test.vue'
-import AxiForm from './AxiForm.vue'
+import ListOrganizations from './ListOrganizations.vue'
+// import Test from '../components/Test.vue'
+// import AxiForm from './AxiForm.vue'
 </script>

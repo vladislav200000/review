@@ -2,12 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AppForm from './components/AppForm.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import ReviewForm from './components/ReviewForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/mainpage',
+      path: '/',
       name: 'home',
       component: AppForm
     },
@@ -23,6 +24,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/review',
+      name: 'review',
+      component: ReviewForm
     }
     // {
     //   path: '/register',

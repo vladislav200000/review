@@ -1,4 +1,6 @@
 <template>
   <RouterView />
 </template>
-<script></script>
+<script>
+console.log(localStorage.getItem('token'))
+</script>

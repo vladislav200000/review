@@ -51,6 +51,7 @@ export default {
       password: ''
     }
   },
+
   methods: {
     async login() {
       try {
@@ -65,7 +66,7 @@ export default {
           }
         )
         localStorage.setItem('token', response.data.token)
-        router.push({ path: '../mainpage' })
+        router.push({ path: '/' })
       } catch (error) {
         if (error.response && error.response.data) {
           alert(error.response.data.message || 'Login failed')
