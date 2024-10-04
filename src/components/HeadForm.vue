@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/valid-template-root -->
 <template>
-  <div class="fixed bg-white hidden sm:flex w-full justify-items-center pr-40">
+  <div
+    class="fixed bg-white hidden sm:flex w-full justify-items-center pr-40 background-opacity will-change-transform will-change-opacity transition-opacity duration-300 z-50"
+  >
     <div class="bg-white min-w-10 px-12 py-6 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mx-auto">
       <img
         src="../assets/images/souz.jpg "

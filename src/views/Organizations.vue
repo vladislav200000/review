@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <RegisterForm />
+  <ListOrganizations />
 </template>
 
 <script setup>
-import RegisterForm from '../components/RegisterForm.vue'
+import ListOrganizations from '../components/ListOrganizations.vue'
 </script>

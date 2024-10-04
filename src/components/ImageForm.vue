@@ -5,9 +5,9 @@ import { mdiChevronDown } from '@mdi/js'
 
 <template>
   <body class="bg-white-100">
-    <div class="flex items-center justify-center">
+    <div class="flex h-screen md:h-full items-center justify-center">
       <form
-        class="bg-image w- max-w-lgs rounded px-8 pt-5 pb-10 mb-4 flex flex-col items-center justify-evenly"
+        class="bg-image max-w-lgs rounded px-8 pt-5 pb-10 mb-4 flex flex-col items-center justify-evenly"
       >
         <div
           class="flex justify-center items-center w- mt-30 max-w-lgs rounded px-8 pt-5 pb-8 mb-4 flex-col mx-auto"
@@ -22,9 +22,9 @@ import { mdiChevronDown } from '@mdi/js'
             Добавить отзыв
           </div>
         </div>
-        <body class="bg-gray-800 flex flex-col items-center justify-center h-screen"></body>
+        <body class="bg-gray-800 fixed flex flex-col items-center justify-center h-screen"></body>
         <button
-          id="@click:scrollButton  justify-center items-center flex-col"
+          id="@click:scrollButton   justify-center items-center flex-col"
           class="focus:outline-none"
         >
           <a href="#text"
@@ -49,7 +49,7 @@ import { mdiChevronDown } from '@mdi/js'
   background-position: center;
   background-color: rgba(83, 78, 71, 0.5);
   background-blend-mode: multiply;
-  height: 50vh;
+  height: 100%;
   width: 100vw;
 }
 .button {

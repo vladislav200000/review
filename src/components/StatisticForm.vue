@@ -9,7 +9,9 @@
         </p>
       </div>
       <h2 class="text-center text-xl font-size">
-        Оценка составлена на опросе сотрудников по критериям:
+        Оценка составлена на опросе сотрудников по критер<span class="pr-3 pt-1 pb-2 bg-orange-400"
+          >иям:</span
+        >
       </h2>
     </div>
   </div>
