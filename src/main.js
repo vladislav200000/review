@@ -1,25 +1,23 @@
 import { createApp } from 'vue'
-
-// import LogRegForm from './components/LogRegForm.vue'
-import './index.css'
-import router from './router'
-import { createStore } from 'vuex'
 import App from './App.vue'
 import axios from 'axios'
+import router from './router.js' // Импортируем router перед его использованием
+import './index.css'
+import { store } from './store'
 
-export const store = createStore({
-  state() {
-    return {
-      count: 0
-    }
-  },
-  mutations: {
-    increment(state) {
-      state.count++
-    }
-  }
-})
+// Инициализация хранилища Vuex
 
+// Настройка базового URL для Axios
 axios.defaults.baseURL = 'http://127.0.0.1:8000'
+if (localStorage.getItem('token')) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+  const response = await axios.get('http://127.0.0.1:8000/api/user')
+  store.commit('login', {
+    email: response.data.email,
+    login: response.data.login,
+    token: localStorage.getItem('token')
+  })
+}
 
-createApp(App).use(store).use(router).mount('#app')
+// Создание и монтирование Vue-приложения
+createApp(App).use(router).use(store).mount('#app')

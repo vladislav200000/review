@@ -6,6 +6,9 @@ import Register from './views/Register.vue'
 import ReviewForm from './components/ReviewForm.vue'
 import Organizations from './views/Organizations.vue'
 import MainLayout from './layouts/MainLayout.vue'
+import Comments from './views/Comments.vue'
+import Card from './views/Card.vue'
+import Logout from './views/Logout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,14 +21,14 @@ const router = createRouter({
 
       children: [
         {
-          path: '/',
+          path: '/urist',
 
-          name: 'mainpage',
+          name: 'urist',
           component: AppForm
         },
         {
-          path: '/organizations',
-          name: 'organizations',
+          path: '/mainpage',
+          name: 'mainpage',
           component: Organizations
         },
         {
@@ -37,6 +40,20 @@ const router = createRouter({
           path: '/profile',
           name: 'profile',
           component: Profile
+        },
+        {
+          path: '/comments',
+          name: 'comments',
+          component: Comments
+        },
+        {
+          path: '/profile/comments',
+          component: Comments
+        },
+        {
+          path: '/card',
+          name: 'card',
+          component: Card
         }
       ]
     },
@@ -51,6 +68,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout
     }
   ]
 })

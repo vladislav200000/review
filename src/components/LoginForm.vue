@@ -42,6 +42,7 @@
 
 <script>
 import router from '@/router'
+import { store } from '@/store'
 import axios from 'axios'
 
 export default {
@@ -66,7 +67,13 @@ export default {
           }
         )
         localStorage.setItem('token', response.data.token)
-        router.push({ path: '/' })
+        store.commit('login', {
+          email: response.data.user.email,
+          login: response.data.user.login,
+          token: response.data.token
+        })
+
+        router.push({ path: '/mainpage' })
       } catch (error) {
         if (error.response && error.response.data) {
           alert(error.response.data.message || 'Login failed')

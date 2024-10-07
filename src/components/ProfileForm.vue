@@ -99,8 +99,8 @@ export default {
   data() {
     return {
       generalInfo: {
-        name: 'vlad',
-        email: 'vladis202000@gmail.com',
+        name: '',
+        email: '',
         newsletter: false
       },
       passwordForm: {

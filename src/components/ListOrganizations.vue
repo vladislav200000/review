@@ -1,6 +1,9 @@
+<!-- eslint-disable vue/require-v-for-key -->
+<!-- eslint-disable vue/no-parsing-error -->
+<!-- eslint-disable vue/no-v-for-template-key-on-child -->
 `<!-- eslint-disable vue/valid-template-root -->
 <template>
-  <div class="mx-32">
+  <class class="mx-32 phone">
     <div class="wrp w-full justify-center flex px-2 pt-16" id="wrapper">
       <div class="">
         <section class="py-2 text-center container element show justify-center">
@@ -32,8 +35,8 @@
     </div>
     <link />
 
-    <div class="justify-center items-center pb-6 mx-20 sm:mx-1 lg:mx-1">
-      <div class="flex flex-col lg:flex-row lg:space-x-6 p-6 space-y-6 lg:space-y-0">
+    <div class="justify-center flex pb-6 mx-60">
+      <div class="flex flex-col justify-between items-center pb-8">
         <div class="space-x-4 flex justify-between px-12">
           <input
             type="text"
@@ -46,38 +49,64 @@
             class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-teal-300"
           />
           <button
-            class="px-8 py-2 border border-gray-300 rounded-md shadow-sm text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300"
+            class="px-8 py-2 border bg-gray-100 border-gray-300 rounded-md shadow-sm text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300"
           >
             Выбрать теги
           </button>
           <button
-            class="px-8 py-2 border border-gray-300 rounded-md shadow-sm text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-orange-400"
+            class="px-8 py-2 border bg-gray-100 border-gray-300 rounded-md shadow-sm text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-orange-400"
           >
             Сбросить
           </button>
         </div>
       </div>
-      <div class="flex justify-end pb-6">
-        <div class="flex justify-center align-items-center">
-          <div class="pt-2 pr-2">Сортировка:</div>
+    </div>
+    <div class="flex justify-end pb-6 mx-56">
+      <div class="flex justify-center align-items-center">
+        <div class="pt-2 pr-2">Сортировка:</div>
 
-          <select
-            class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300 pl-2"
-          >
-            <option value="desc">Рейтинг: Хорошие</option>
-            <option value="asc">Рейтинг: Плохие</option>
-            <option value="news">Время: Новые</option>
-            <option value="olds">Время: Старые</option>
-            <option value="views">По популярности</option>
-          </select>
-        </div>
+        <select
+          class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300 pl-2"
+        >
+          <option value="desc">Рейтинг: Хорошие</option>
+          <option value="asc">Рейтинг: Плохие</option>
+          <option value="news">Время: Новые</option>
+          <option value="olds">Время: Старые</option>
+          <option value="views">По популярности</option>
+        </select>
       </div>
     </div>
-  </div>
+  </class>
 
-  <div class="bg-gray-200 p-6 rounded-lg shadow-md mx-32 h-60 border-gray-600 border mb-36">
-    <h1 class="text-xl font-semibold text-gray-800"></h1>
-    <p class="text-gray-600"></p>
-  </div>
+  <!-- !!! -->
+  <form
+    class="h-56 flex-col pb-6 mx-60 mb-20 justify-center bg-gray-100 border-gray-300 border rounded-xl p-3"
+  >
+    <div
+      class="flex border-gray-300 items-center justify-items-start pt-10 mx-40 ml-1 bg-gray-100 shadow-md rounded-lg mb-20"
+    >
+      <div class="pb-6 pl-6">
+        <a href="/card">
+          <h2 class="text-xl font-bold">Юрист для дюдей</h2>
+        </a>
+        <div class="flex items-center space-x-1 text-red-500">
+          <p>Оценка</p>
+        </div>
+
+        <p class="text-gray-700">Город</p>
+
+        <p class="text-sm text-gray-500">Адрес</p>
+      </div>
+
+      <div class="ml-4">
+        <a href="/card">
+          <img
+            class="w-24 h-24 rounded object-cover"
+            src="../assets/images/black.icon.jpeg.jpg"
+            alt="Логотип"
+          />
+        </a>
+      </div>
+    </div>
+  </form>
 </template>
-`

@@ -11,6 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@headlessui/vue": "^0.0.0-insiders.2422250",
+    "@heroicons/vue": "^2.1.5",
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "@moesaid/cleopatra": "^1.1.1",
