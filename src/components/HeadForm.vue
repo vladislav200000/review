@@ -51,7 +51,7 @@
       </div>
     </header>
     <Menu as="div" class="relative flex justify-items-end text-left sm">
-      <div>
+      <div class="flex-col justify-center pt-10">
         <MenuButton
           class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
@@ -159,7 +159,7 @@
       class="sm:flex sm:items-center sm:justify-center space-x-6 justify-around pt-8 absolute bg-white w-full top-8"
     >
       <Menu as="div" class="relative flex justify-items-end text-left sm">
-        <div>
+        <div class="sm:pl-48">
           <MenuButton
             class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
