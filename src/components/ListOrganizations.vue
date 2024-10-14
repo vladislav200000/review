@@ -96,7 +96,7 @@
         class="shadow-xl object-cover transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-4 hover:border-teal-500 rounded-lg flex flex-col md:flex-row items-center justify-items-start p-4 md:pt-10 md:mx-40 ml-1 bg-gray-100 mb-10"
       >
         <div class="pb-4 md:pb-6 pl-2 md:pl-6">
-          <a href="/card {{ data.id }}">
+          <a href="/card {{ id }}">
             <h2 class="text-lg md:text-xl font-bold">Юрист для людей</h2>
           </a>
           <div class="flex items-center space-x-1 text-red-500">
@@ -106,7 +106,7 @@
           <p class="text-sm text-gray-500">Адрес</p>
         </div>
         <div class="mt-4 md:ml-4">
-          <RouterLink :to="{ name: 'card', params: { id: 1 } }">
+          <RouterLink :to="{ name: 'card', params: { id: 2 } }">
             <img
               class="w-24 h-24 md:w-28 md:h-28 rounded object-cover"
               src="../assets/images/black.icon.jpeg.jpg"

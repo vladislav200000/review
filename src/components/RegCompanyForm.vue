@@ -64,6 +64,8 @@
         <button
           class="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
           type="submit"
+          @click="RouterLink"
+          to="/"
         >
           Зарегистрировать
         </button>
@@ -74,6 +76,7 @@
 <script setup>
 import axios from 'axios'
 import { reactive } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const data = reactive({
   name: '',

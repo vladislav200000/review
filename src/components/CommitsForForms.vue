@@ -1,34 +1,24 @@
 <template>
-  <div class="flex-col mx-56">
-    <div class="flex flex-col justify-between">
-      <h3 class="text-lg font-semibold mb-4">Оставить отзыв:</h3>
-      <div class="p-4 bg-gray-100 shadow-md rounded-md mb-4">
-        <p class="text-sm font-bold">Ваш отзыв:</p>
-        <textarea
-          v-model="comment"
-          class="mt-1 block w-full p-2 border rounded-md shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-orange-300"
-          placeholder="Введите комментарий"
-        ></textarea>
-
-        <p class="mt-2"><strong>Оценка:</strong></p>
-        <select
-          v-model="rating"
-          class="px-4 border border-gray-300 rounded-md text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300"
-        >
-          <option value="5">Отлично</option>
-          <option value="4">Хорошо</option>
-          <option value="3">Средне</option>
-          <option value="2">Плохо</option>
-          <option value="1">Ужасно</option>
-        </select>
-
-        <button
-          @click="submitComment"
-          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
-        >
-          Отправить отзыв
-        </button>
+  <div
+    class="flex-wrap mx-4 sm:mx-2 md:mx-10 lg:mx-20 xl:mx-40 sm:ml-2 sm:mt-2 sm:w-auto sm:h-auto"
+  >
+    <h3 class="text-sm font-bold mb-2">Отзывы компании:</h3>
+    <div v-if="comments.length">
+      <div
+        v-for="comment in comments"
+        :key="comment.id"
+        class="p-2 bg-gray-100 shadow-md rounded-md mb-2"
+      >
+        <p class="text-xs font-bold">
+          {{ comment.name }} Оценка ({{ comment.rating }}/5) {{ comment.status }}
+        </p>
+        <p class="text-xs">Комментарий:{{ comment.comment }}></p>
+        <p class="text-xs">Достоинства: {{ comment.advantages }}</p>
+        <p class="text-xs">Недостатки: {{ comment.disadvantages }}</p>
       </div>
+    </div>
+    <div v-else>
+      <p>Отзывов пока нет.</p>
     </div>
   </div>
 </template>
@@ -37,22 +27,38 @@
 import axios from 'axios'
 
 export default {
+  props: ['companyId'],
   data() {
     return {
-      comment: '',
-      rating: 5
+      comments: [],
+      newComment: '',
+      newRating: 5
     }
   },
+  mounted() {
+    this.fetchComments()
+  },
   methods: {
+    async fetchComments() {
+      try {
+        const response = await axios.get(`/api/comments`)
+        this.comments = response.data
+      } catch (error) {
+        console.error('Ошибка при загрузке комментариев:', error)
+      }
+    },
     async submitComment() {
       try {
         await axios.post('/api/comments', {
-          content: this.comment,
-          rating: this.rating
+          content: this.newComment,
+          rating: this.newRating,
+          company_id: this.companyId
         })
-        this.comment = ''
-        this.rating = 5
+        this.newComment = ''
+        this.newRating = 5
         alert('Комментарий успешно отправлен')
+
+        this.fetchComments()
       } catch (error) {
         console.error('Ошибка при отправке комментария:', error)
         alert('Произошла ошибка при отправке комментария')

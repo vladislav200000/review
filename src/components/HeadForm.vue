@@ -14,6 +14,7 @@ const logout = () => {
       console.log(response.data.message)
       store.commit('logout')
       router.push('/login')
+      console.log(store.state)
     })
     .catch((error) => {
       console.error('Error during logout:', error)
@@ -21,8 +22,6 @@ const logout = () => {
 }
 
 const isAuthenticated = computed(() => store.state.authenticated)
-
-console.log(store.state)
 
 const isMenuOpen = ref(false)
 const toggleMenu = () => {
