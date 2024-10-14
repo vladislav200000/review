@@ -1,10 +1,41 @@
 <!-- eslint-disable vue/valid-template-root -->
+<script setup>
+import { store } from '@/store'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { computed, ref } from 'vue'
+import axios from 'axios'
+import router from '@/router'
+
+const logout = () => {
+  axios
+    .post('/api/logout', {}, { withCredentials: true })
+    .then((response) => {
+      console.log(response.data.message)
+      store.commit('logout')
+      router.push('/login')
+    })
+    .catch((error) => {
+      console.error('Error during logout:', error)
+    })
+}
+
+const isAuthenticated = computed(() => store.state.authenticated)
+
+console.log(store.state)
+
+const isMenuOpen = ref(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+</script>
+
 <template>
   <div
     class="fixed bg-white hidden sm:flex w-full justify-items-center pr-40 background-opacity will-change-transform will-change-opacity transition-opacity duration-300 z-50"
   >
     <div class="bg-white min-w-10 px-12 py-6 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mx-auto">
-      <a href="/mainpage">
+      <a href="/">
         <img
           src="../assets/images/souz.jpg "
           alt="Логотип"
@@ -70,70 +101,63 @@
         leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none justify-center"
+          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         >
-          <div class="py-1">
-            <MenuItem v-slot="{ active }">
-              <a
-                href="/profile"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Профиль</a
+          <div class="py-1 flex flex-col">
+            <MenuItem>
+              <RouterLink
+                to="/register"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
-            </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                href="/comments"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Мои отзывы</a
-              >
+                Регистрация
+              </RouterLink>
             </MenuItem>
 
-            <MenuItem v-slot="{ active }">
-              <a
-                href="/mainpage"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Главная страница</a
+            <MenuItem>
+              <RouterLink
+                to="/login"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
+                Авторизация
+              </RouterLink>
             </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                href="/urist"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Организации</a
+            <div v-if="isAuthenticated">
+              <MenuItem>
+                <RouterLink
+                  to="/profile"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >
+                  Профиль
+                </RouterLink>
+              </MenuItem>
+
+              <MenuItem>
+                <RouterLink
+                  to="/comments"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >
+                  Мои отзывы
+                </RouterLink>
+              </MenuItem>
+            </div>
+            <MenuItem>
+              <RouterLink
+                to="/urist"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               >
+                Организации
+              </RouterLink>
             </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                @click="logout"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Выйти</a
-              >
-            </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                href="/review"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                ]"
-                >Опрос</a
-              >
-            </MenuItem>
+            <div v-if="isAuthenticated">
+              <MenuItem>
+                <div
+                  @click="logout"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                >
+                  Выйти
+                </div>
+              </MenuItem>
+            </div>
           </div>
         </MenuItems>
       </transition>
@@ -177,63 +201,63 @@
           leave-to-class="transform opacity-0 scale-95"
         >
           <MenuItems
-            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none justify-center"
+            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
-            <div class="py-1">
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="/profile"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  ]"
-                  >Профиль</a
+            <div class="py-1 flex flex-col">
+              <MenuItem>
+                <RouterLink
+                  to="/register"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 >
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="/comments"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  ]"
-                  >Мои отзывы</a
-                >
+                  Регистрация
+                </RouterLink>
               </MenuItem>
 
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="/mainpage"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  ]"
-                  >Главная страница</a
-                >
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="/usrist"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  ]"
-                  >Организации</a
-                >
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="/review"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  ]"
-                  >Опрос</a
-                >
-              </MenuItem>
               <MenuItem>
-                <a @click.capture="logout" class="{{styles}}">Выйти</a>
+                <RouterLink
+                  to="/login"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >
+                  Авторизация
+                </RouterLink>
               </MenuItem>
+              <div v-if="isAuthenticated">
+                <MenuItem>
+                  <RouterLink
+                    to="/profile"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  >
+                    Профиль
+                  </RouterLink>
+                </MenuItem>
+
+                <MenuItem>
+                  <RouterLink
+                    to="/comments"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  >
+                    Мои отзывы
+                  </RouterLink>
+                </MenuItem>
+              </div>
+              <MenuItem>
+                <RouterLink
+                  to="/urist"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >
+                  Организации
+                </RouterLink>
+              </MenuItem>
+              <div v-if="isAuthenticated">
+                <MenuItem>
+                  <div
+                    @click="logout"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                  >
+                    Выйти
+                  </div>
+                </MenuItem>
+              </div>
             </div>
           </MenuItems>
         </transition>
@@ -273,20 +297,3 @@
 
   <div class="h-8 block sm:hidden"></div>
 </template>
-<script setup>
-import { store } from '@/store'
-console.log(store.state.email)
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import { ref } from 'vue'
-// import { computed, ref } from 'vue'
-
-// let styles = computed(() => {
-//   return active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm'
-// })
-
-const isMenuOpen = ref(false)
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-</script>

@@ -8,16 +8,16 @@
 </template>
 
 <script>
-import axios from 'axios' // Убедитесь, что axios настроен
+import axios from 'axios'
 
 export default {
   methods: {
     async logout() {
       try {
-        // Отправка запроса на сервер для выхода
         const response = await axios.post('/api/logout', {}, { withCredentials: true }) // Используем API route
         console.log(response.data.message)
-        // Логика для выхода (например, редирект на страницу входа)
+
+        localStorage.removeItem('token')
         this.$router.push({ name: 'login' })
       } catch (error) {
         console.error('Error during logout:', error)

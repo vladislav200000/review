@@ -9,11 +9,17 @@ import MainLayout from './layouts/MainLayout.vue'
 import Comments from './views/Comments.vue'
 import Card from './views/Card.vue'
 import Logout from './views/Logout.vue'
+import RegCompany from './views/RegCompany.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
+    {
+      path: '/login',
+      name: 'home',
+      component: Login
+    },
     {
       path: '/',
       name: 'home',
@@ -27,7 +33,7 @@ const router = createRouter({
           component: AppForm
         },
         {
-          path: '/mainpage',
+          path: '/',
           name: 'mainpage',
           component: Organizations
         },
@@ -39,21 +45,32 @@ const router = createRouter({
         {
           path: '/profile',
           name: 'profile',
-          component: Profile
+          component: Profile,
+          meta: {
+            requiresAuth: true
+          }
         },
         {
           path: '/comments',
           name: 'comments',
-          component: Comments
+          component: Comments,
+          meta: {
+            requiresAuth: true
+          }
         },
         {
           path: '/profile/comments',
           component: Comments
         },
         {
-          path: '/card',
+          path: '/card/:id',
           name: 'card',
           component: Card
+        },
+        {
+          path: '/register-org',
+          name: 'register-org',
+          component: RegCompany
         }
       ]
     },
@@ -75,6 +92,16 @@ const router = createRouter({
       component: Logout
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('token')
+
+  if (to.matched.some((record) => record.meta.requiresAuth) && !isAuthenticated) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

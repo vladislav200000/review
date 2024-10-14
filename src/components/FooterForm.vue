@@ -11,19 +11,24 @@
       </div>
 
       <nav class="flex flex-col text-pretty">
-        <a href="#" class="hover:underline text-sm pt-2">Справка</a>
-        <a href="#" class="hover:underline text-sm pt-2">Связаться с нами</a>
-        <a href="#" class="hover:underline text-sm pt-2">© 2024 soyuz.nezavisimyhotsenshiko</a>
-        <a href="#" class="hover:underline text-sm pt-2">О проекте</a>
+        <RouterLink to="" class="hover:underline text-sm pt-2">Справка</RouterLink>
+        <RouterLink to="" class="hover:underline text-sm pt-2">Связаться с нами</RouterLink>
+        <RouterLink to="" class="hover:underline text-sm pt-2"
+          >© 2024 soyuz.nezavisimyhotsenshiko</RouterLink
+        >
+        <RouterLink to="" class="hover:underline text-sm pt-2">О проекте</RouterLink>
       </nav>
 
       <nav class="flex flex-col text-pretty">
-        <a href="#" class="hover:underline text-sm">Поиск компаний</a>
+        <RouterLink to="" class="hover:underline text-sm">Поиск компаний</RouterLink>
+        <RouterLink to="/register-org" class="hover:underline text-sm pt-2"
+          >Добавить компанию</RouterLink
+        >
       </nav>
 
       <nav class="flex flex-col text-sm font-bold text-pretty">
-        <a href="#" class="hover:underline">Топ 10 лучших компаний</a>
-        <a href="#" class="hover:underline pt-2">Топ 10 худших компаний</a>
+        <RouterLink to="" class="hover:underline">Топ 10 лучших компаний</RouterLink>
+        <RouterLink to="" class="hover:underline pt-2">Топ 10 худших компаний</RouterLink>
       </nav>
     </div>
   </footer>

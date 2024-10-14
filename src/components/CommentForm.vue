@@ -112,39 +112,6 @@
       </div>
     </div>
   </form>
-
-  <div class="flex-col mx-56">
-    <div class="flex flex-col justify-between">
-      <h3 class="text-lg font-semibold mb-4">Отзывы организации:</h3>
-      <div class="flex items-center justify-between">
-        <div class="h-8 mt-6 justify-">
-          <select
-            class="px-4 border border-gray-300 rounded-md text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-teal-300"
-          >
-            <option value="desc">Рейтинг: Хорошие</option>
-            <option value="asc">Рейтинг: Плохие</option>
-            <option value="news">Время: Новые</option>
-            <option value="olds">Время: Старые</option>
-            <option value="views">По популярности</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Отзывы -->
-      <div class="p-4 bg-gray-100 shadow-md rounded-md mb-4">
-        <p class="text-sm font-bold">Имя (Статус)</p>
-        <input
-          type="text"
-          id="disadvantages"
-          class="mt-1 block w-full p-2 border rounded-md shadow-sm hover:bg-gray-200 focus:outline-none focus:ring focus:ring-orange-300"
-          placeholder="Коментарий"
-        />
-        <p class="mt-2">
-          <strong>Оценка:</strong>
-        </p>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
