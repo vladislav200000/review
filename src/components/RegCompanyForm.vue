@@ -64,8 +64,7 @@
         <button
           class="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
           type="submit"
-          @click="RouterLink"
-          to="/"
+          href="/card{{ `${id}` }}"
         >
           Зарегистрировать
         </button>
@@ -75,8 +74,27 @@
 </template>
 <script setup>
 import axios from 'axios'
+import { Route } from 'router'
 import { reactive } from 'vue'
-import { RouterLink } from 'vue-router'
+// import { RouterLink } from 'vue-router'
+
+async function fetchData() {
+  const response = await axios.get(`/api/company/${Route.params.id}`)
+  data.id = response.data.card.id
+  data.logo = response.data.card.logo
+  data.name = response.data.card.name
+  data.city = response.data.card.city
+  data.rating = response.data.card.rating
+  data.address = response.data.card.address
+  data.details = response.data.card.details
+  data.main_office = response.data.card.main_office
+  data.representative = response.data.card.representative
+  data.image = response.data.card.image
+  data.photos = response.data.photos
+  data.comments = response.data.comments
+}
+
+fetchData()
 
 const data = reactive({
   name: '',

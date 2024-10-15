@@ -7,7 +7,9 @@
         alt="Логотип"
       />
       <div class="pl-3 sm:pl-5">
-        <p class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700">Отзывы:</p>
+        <p class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700">
+          Отзывы:{{ data.name }}
+        </p>
         <p class="text-sm sm:text-base">Город: {{ data.city }}</p>
         <div class="flex flex-col">
           <span class="text-sm sm:text-base">Рейтинг:</span>

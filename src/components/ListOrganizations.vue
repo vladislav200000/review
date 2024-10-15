@@ -90,15 +90,38 @@
 
     <!-- Карточка организации -->
     <form
-      class="h-auto flex-col pb-6 mx-auto mb-10 md:mb-20 justify-center bg-gray-100 border-gray-300 border rounded-xl p-3"
+      class="h-auto flex-col pb-6 mx-auto mb-10 md:mb-20 bg-gray-100 border-gray-300 border rounded-xl p-3 justify-between"
     >
       <div
         class="shadow-xl object-cover transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-4 hover:border-teal-500 rounded-lg flex flex-col md:flex-row items-center justify-items-start p-4 md:pt-10 md:mx-40 ml-1 bg-gray-100 mb-10"
       >
         <div class="pb-4 md:pb-6 pl-2 md:pl-6">
-          <a href="/card {{ id }}">
-            <h2 class="text-lg md:text-xl font-bold">Юрист для людей</h2>
+          <a href="/card {{ `${id}` }}">
+            <h2 class="text-lg md:text-xl font-bold">Организация</h2>
           </a>
+          <div class="flex items-center space-x-1 text-red-500">
+            <p>Оценка:</p>
+          </div>
+          <p class="text-gray-700">Город</p>
+          <p class="text-sm text-gray-500">Адрес</p>
+        </div>
+        <div class="mt-4 md:ml-4">
+          <RouterLink :to="`/card/${id}`">
+            <img
+              class="w-24 h-24 md:w-28 md:h-28 rounded object-cover"
+              src="../assets/images/black.icon.jpeg.jpg"
+              alt="Логотип"
+            />
+          </RouterLink>
+        </div>
+      </div>
+      <div
+        class="shadow-xl object-cover transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-4 hover:border-teal-500 rounded-lg flex flex-col md:flex-row items-center justify-items-start p-4 md:pt-10 md:mx-40 ml-1 bg-gray-100 mb-10"
+      >
+        <div class="pb-4 md:pb-6 pl-2 md:pl-6">
+          <RouterLink :to="`/card/${id}`">
+            <h2 class="text-lg md:text-xl font-bold">Юрист для людей</h2>
+          </RouterLink>
           <div class="flex items-center space-x-1 text-red-500">
             <p>Оценка</p>
           </div>
@@ -106,7 +129,7 @@
           <p class="text-sm text-gray-500">Адрес</p>
         </div>
         <div class="mt-4 md:ml-4">
-          <RouterLink :to="{ name: 'card', params: { id: 2 } }">
+          <RouterLink :to="`/card/${id}`">
             <img
               class="w-24 h-24 md:w-28 md:h-28 rounded object-cover"
               src="../assets/images/black.icon.jpeg.jpg"
@@ -118,12 +141,15 @@
     </form>
   </div>
 </template>
-<script>
+<script setup>
+// import CommentForm from './CommentForm.vue'
 import axios from 'axios'
-import route from '@/router'
-
 import { reactive } from 'vue'
+import { useRoute } from 'vue-router'
+// import CardForm from './CardForm.vue'
+// import CommitsForForms from './CommitsForForms.vue'
 
+const route = useRoute()
 const data = reactive({
   id: '',
   logo: '',
@@ -134,11 +160,14 @@ const data = reactive({
   details: '',
   main_office: '',
   representative: '',
-  image: ''
+  image: '',
+  photos: [],
+  comments: []
 })
+
 async function fetchData() {
   const response = await axios.get(`/api/company/${route.params.id}`)
-  console.log(response.data.card)
+
   data.id = response.data.card.id
   data.logo = response.data.card.logo
   data.name = response.data.card.name
@@ -149,8 +178,9 @@ async function fetchData() {
   data.main_office = response.data.card.main_office
   data.representative = response.data.card.representative
   data.image = response.data.card.image
-  data.photos = response.data.card.photos
-  data.comments = response.data.card.comments
+  data.photos = response.data.photos
+  data.comments = response.data.comments
 }
+
 fetchData()
 </script>
